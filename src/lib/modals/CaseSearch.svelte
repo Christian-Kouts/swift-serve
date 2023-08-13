@@ -8,12 +8,19 @@
 	const cHeader = 'bg-surface-300-600-token flex items-center';
 	const cSearchInput = 'bg-transparent border-0 ring-0 focus:ring-0 w-full p-4 text-lg';
 	const cResults = 'overflow-x-auto max-h-[480px] hide-scrollbar';
-	const cResultAnchor = '!rounded-none justify-between hover:variant-soft focus:!variant-filled-primary outline-0';
-	const cFooter = 'hidden md:flex items-center gap-2 bg-surface-300-600-token p-4 text-xs font-bold';
+	const cResultAnchor =
+		'!rounded-none justify-between hover:variant-soft focus:!variant-filled-primary outline-0';
+	const cFooter =
+		'hidden md:flex items-center gap-2 bg-surface-300-600-token p-4 text-xs font-bold';
 
 	// Local
 	let searchTerm = '';
-	let resultsCopy = [...menuNavLinks['/docs'], ...menuNavLinks['/elements'], ...menuNavLinks['/svelte'], ...menuNavLinks['/utilities']];
+	let resultsCopy = [
+		...menuNavLinks['/docs'],
+		...menuNavLinks['/elements'],
+		...menuNavLinks['/svelte'],
+		...menuNavLinks['/utilities']
+	];
 	let results = resultsCopy;
 
 	// Elements
@@ -46,11 +53,18 @@
 	<!-- Header -->
 	<header class="modal-search-header {cHeader}">
 		<i class="fa-solid fa-magnifying-glass text-xl ml-4" />
-		<input class={cSearchInput} bind:value={searchTerm} type="search" placeholder="Search..." on:input={onInput} on:keydown={onKeyDown} />
+		<input
+			class={cSearchInput}
+			bind:value={searchTerm}
+			type="search"
+			placeholder="Search..."
+			on:input={onInput}
+			on:keydown={onKeyDown}
+		/>
 	</header>
 	<!-- Results -->
 	{#if results.length > 0}
-		<!-- <nav class="list-nav {cResults}" tabindex="-1">
+		<nav class="list-nav {cResults}" tabindex="-1">
 			{#each results as category}
 				<div class="text-sm font-bold p-4">{category.title}</div>
 				<ul>
@@ -73,7 +87,7 @@
 					{/each}
 				</ul>
 			{/each}
-		</nav> -->
+		</nav>
 	{:else}
 		<div class="p-4">
 			<p>No Results found for <code class="code">{searchTerm}</code>.</p>
